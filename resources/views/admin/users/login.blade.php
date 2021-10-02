@@ -12,15 +12,8 @@
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+
+                @include('admin.alert')
 
                 <form action="/admin/users/login/authenticate" method="post">
                     <div class="input-group mb-3">

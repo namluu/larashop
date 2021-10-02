@@ -8,6 +8,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('admin/users/login', [LoginController::class, 'index']);
+Route::get('admin/users/login', [LoginController::class, 'index'])->name('login');
 Route::post('admin/users/login/authenticate', [LoginController::class, 'authenticate']);
-Route::get('admin/dashboard', [DashboardController::class, 'index']);
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('admin');
+});
