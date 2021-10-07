@@ -70,7 +70,5 @@
     <!-- ./wrapper -->
 
     @include('admin.footer')
-    <script src="/template/admin/plugins/chart.js/Chart.min.js"></script>
-    <script src="/template/admin/dist/js/pages/dashboard3.js"></script>
 </body>
 </html>

@@ -37,28 +37,19 @@
                 <li class="nav-item menu-open">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Dashboard
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
+                        <p>Menus<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="./index.html" class="nav-link">
+                            <a href="{{ route('menus.add') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v1</p>
+                                <p>Add menu</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./index2.html" class="nav-link">
+                            <a href="/admin/menus/list" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v2</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./index3.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v3</p>
+                                <p>List menu</p>
                             </a>
                         </li>
                     </ul>

@@ -11,3 +11,4 @@
 <!-- Theme style -->
 <link rel="stylesheet" href="/template/admin/dist/css/adminlte.min.css">
 
+@yield('head')
