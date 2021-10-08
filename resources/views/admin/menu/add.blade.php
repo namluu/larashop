@@ -21,7 +21,10 @@
                 <div class="form-group">
                     <label>Parent</label>
                     <select class="form-control" name="parent_id">
-                        <option value="0">Parent</option>
+                        <option value="0">--- root ---</option>
+                        @foreach($menuParents as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -38,11 +41,11 @@
                 <div class="form-group">
                     <label>Active</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="active" checked="">
+                        <input class="form-check-input" type="radio" name="active" value="1" checked="">
                         <label class="form-check-label">Yes</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="active">
+                        <input class="form-check-input" type="radio" name="active" value="0">
                         <label class="form-check-label">No</label>
                     </div>
                 </div>
@@ -52,6 +55,8 @@
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
+
+            @csrf
         </form>
     </div>
 @endsection

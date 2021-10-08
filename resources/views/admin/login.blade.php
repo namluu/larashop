@@ -15,7 +15,7 @@
 
                 @include('admin.alert')
 
-                <form action="/admin/users/login/authenticate" method="post">
+                <form action="{{ route('login.auth') }}" method="post">
                     <div class="input-group mb-3">
                         <input type="email" class="form-control" placeholder="Email" name="email">
                         <div class="input-group-append">

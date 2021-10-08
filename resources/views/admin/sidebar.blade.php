@@ -36,20 +36,20 @@
                      with font-awesome or any other icon font library -->
                 <li class="nav-item menu-open">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-bars"></i>
                         <p>Menus<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('menus.add') }}" class="nav-link">
+                            <a href="{{ route('menus.list') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Add menu</p>
+                                <p>List menu</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/menus/list" class="nav-link">
+                            <a href="{{ route('menus.add') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>List menu</p>
+                                <p>Add menu</p>
                             </a>
                         </li>
                     </ul>
