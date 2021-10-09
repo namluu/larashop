@@ -18,15 +18,13 @@ class MenuController extends Controller
     public function index()
     {
         return view('admin.menu.index', [
-            'title' => 'List menu',
             'menus' => $this->menuService->getAll()
         ]);
     }
 
     public function create()
     {
-        return view('admin.menu.add', [
-            'title' => 'Add menu',
+        return view('admin.menu.create', [
             'menuParents' => $this->menuService->getParents()
         ]);
     }
@@ -34,6 +32,6 @@ class MenuController extends Controller
     public function store(MenuFormRequest $request)
     {
         $this->menuService->create($request);
-        return redirect()->route('menus.list');
+        return redirect()->route('menus.index');
     }
 }

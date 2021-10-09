@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Admin | Login</title>
     @include('admin.head')
 </head>
 <body class="hold-transition login-page">

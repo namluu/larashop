@@ -1,5 +1,9 @@
 @extends('admin.layout')
 
+@section('title')
+    Create menu
+@endsection
+
 @section('head')
     <script src="/template/admin/ckeditor/ckeditor.js"></script>
 @endsection
@@ -11,7 +15,7 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form action="" method="post">
+        <form action="{{ route('menus.store') }}" method="post">
             <div class="card-body">
                 <div class="form-group">
                     <label>Name</label>

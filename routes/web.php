@@ -11,6 +11,7 @@ Route::get('/', function () {
 
 Route::get('admin/login', [LoginController::class, 'index'])->name('login');
 Route::post('admin/login/authenticate', [LoginController::class, 'authenticate'])->name('login.auth');
+Route::get('admin/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->group(function () {
@@ -18,9 +19,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index']);
 
         Route::prefix('menus')->group(function () {
-            Route::get('/', [MenuController::class, 'index'])->name('menus.list');
-            Route::get('add', [MenuController::class, 'create'])->name('menus.add');
-            Route::post('add', [MenuController::class, 'store'])->name('menus.store');
+            Route::get('/', [MenuController::class, 'index'])->name('menus.index');
+            Route::get('create', [MenuController::class, 'create'])->name('menus.create');
+            Route::post('/', [MenuController::class, 'store'])->name('menus.store');
         });
     });
 });

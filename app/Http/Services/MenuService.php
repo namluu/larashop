@@ -8,7 +8,7 @@ class MenuService
 {
     public function getAll()
     {
-        return Menu::all();
+        return Menu::orderByDesc('id')->paginate(2);
     }
 
     public function create($request)
