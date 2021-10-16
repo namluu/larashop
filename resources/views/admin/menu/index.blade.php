@@ -6,6 +6,7 @@
 
 @section('content')
     <div class="card-header">
+        <h3 class="card-title">Latest menus</h3>
         <div class="card-tools">
             {{ $menus->links() }}
         </div>
@@ -19,6 +20,7 @@
                     <th>Description</th>
                     <th>Active</th>
                     <th>Date</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +31,10 @@
                     <td>{{ Str::of($item->description)->words(15, '...') }}</td>
                     <td>{{ $item->active }}</td>
                     <td>{{ $item->created_at }}</td>
+                    <td>
+                        <a href="{{ route('menus.edit', $item->id)  }}"><i class="fas fa-edit"></i></a>&nbsp;|&nbsp;
+                        <a href="#" onclick="removeRow({{$item->id}}, '{{ route('menus.delete')  }}')"><i class="fas fa-trash text-danger"></i></a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

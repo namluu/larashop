@@ -22,6 +22,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [MenuController::class, 'index'])->name('menus.index');
             Route::get('create', [MenuController::class, 'create'])->name('menus.create');
             Route::post('/', [MenuController::class, 'store'])->name('menus.store');
+            Route::get('{id}/edit', [MenuController::class, 'edit'])->name('menus.edit');
+            Route::delete('destroy', [MenuController::class, 'destroy'])->name('menus.delete');
         });
     });
 });

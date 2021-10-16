@@ -11,7 +11,7 @@ class MenuService
         return Menu::orderByDesc('id')->paginate(2);
     }
 
-    public function create($request)
+    public function create($request): bool
     {
         try {
             Menu::create([
@@ -34,5 +34,23 @@ class MenuService
     public function getParents()
     {
         return Menu::where('parent_id', 0)->get();
+    }
+
+    public function destroy($request): bool
+    {
+        try {
+            $id = $request->input('id');
+            $menu = Menu::where('id', $id);
+            if ($menu->exists()) {
+                $menu->orWhere('parent_id', $id)->delete();
+                Session::flash('success', 'Delete successfully');
+                return true;
+            }
+            Session::flash('error', 'No exist data');
+            return false;
+        } catch (\Exception $e) {
+            Session::flash('error', $e->getMessage());
+            return false;
+        }
     }
 }
