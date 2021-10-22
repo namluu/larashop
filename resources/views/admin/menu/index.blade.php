@@ -1,8 +1,6 @@
 @extends('admin.layout')
 
-@section('title')
-    Index menu
-@endsection
+@section('title', 'Index menu')
 
 @section('content')
     <div class="card-header">
@@ -12,6 +10,7 @@
         </div>
     </div>
     <div class="card-body table-responsive p-0">
+
         <table class="table table-hover text-nowrap">
             <thead>
                 <tr>
@@ -24,19 +23,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($menus as $item)
-                <tr>
-                    <td>{{ $item->id }}</td>
-                    <td>{{ $item->name }}</td>
-                    <td>{{ Str::of($item->description)->words(15, '...') }}</td>
-                    <td>{{ $item->active }}</td>
-                    <td>{{ $item->created_at }}</td>
-                    <td>
-                        <a href="{{ route('menus.edit', $item->id)  }}"><i class="fas fa-edit"></i></a>&nbsp;|&nbsp;
-                        <a href="#" onclick="removeRow({{$item->id}}, '{{ route('menus.delete')  }}')"><i class="fas fa-trash text-danger"></i></a>
-                    </td>
-                </tr>
-                @endforeach
+                @include('admin.menu.multiple', ['menus' => $menus, 'parent_id' => 0, 'char' => ''])
             </tbody>
         </table>
     </div>

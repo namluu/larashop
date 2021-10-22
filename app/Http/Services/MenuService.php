@@ -8,7 +8,7 @@ class MenuService
 {
     public function getAll()
     {
-        return Menu::orderByDesc('id')->paginate(2);
+        return Menu::orderByDesc('id')->paginate(30);
     }
 
     public function create($request): bool
@@ -34,6 +34,20 @@ class MenuService
     public function getParents()
     {
         return Menu::where('parent_id', 0)->get();
+    }
+
+    public function update($menu, $request): bool
+    {
+        try {
+            $menu->fill($request->input());
+            $menu->save();
+            Session::flash('success', 'Create successfully');
+        } catch (\Exception $e) {
+            Session::flash('error', $e->getMessage());
+            return false;
+        }
+
+        return true;
     }
 
     public function destroy($request): bool
