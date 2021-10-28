@@ -1,6 +1,6 @@
 @extends('admin.layout')
 
-@section('title', 'Create menu')
+@section('title', 'Create product')
 
 @section('head')
     <script src="/template/admin/ckeditor/ckeditor.js"></script>
@@ -13,21 +13,38 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form action="{{ route('menus.store') }}" method="post">
+        <form action="{{ route('products.store') }}" method="post">
             <div class="card-body">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input class="form-control" name="name">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input class="form-control" name="name">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Menu</label>
+                            <select class="form-control" name="menu_id">
+
+                            </select>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label>Parent</label>
-                    <select class="form-control" name="parent_id">
-                        <option value="0">--- root ---</option>
-                        @foreach($menuParents as $item)
-                            <option value="{{ $item->id }}">{{ $item->name }}</option>
-                        @endforeach
-                    </select>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input class="form-control" name="price" type="number">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Discount</label>
+                            <input class="form-control" name="price_discount" type="number">
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group">

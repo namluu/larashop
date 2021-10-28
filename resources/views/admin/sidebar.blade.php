@@ -34,51 +34,42 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-                <li class="nav-item menu-open">
+                <li class="nav-item {{\App\Helpers\Menu::menuActiveLv1('menus')}}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-bars"></i>
                         <p>Menus<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('menus.index') }}" class="nav-link">
+                            <a href="{{ route('menus.index') }}" class="nav-link {{\App\Helpers\Menu::menuActiveLv2('menus.index')}}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>List menu</p>
+                                <p>List menus</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('menus.create') }}" class="nav-link">
+                            <a href="{{ route('menus.create') }}" class="nav-link {{\App\Helpers\Menu::menuActiveLv2('menus.create')}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Create menu</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item menu-open">
+                <li class="nav-item {{\App\Helpers\Menu::menuActiveLv1('products')}}">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Dashboard
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
+                        <i class="nav-icon fas fa-table"></i>
+                        <p>Products<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="./index.html" class="nav-link">
+                            <a href="{{ route('products.index') }}" class="nav-link {{\App\Helpers\Menu::menuActiveLv2('products.index')}}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v1</p>
+                                <p>List products</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./index2.html" class="nav-link">
+                            <a href="{{ route('products.create') }}" class="nav-link {{\App\Helpers\Menu::menuActiveLv2('products.create')}}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v2</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./index3.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v3</p>
+                                <p>Create product</p>
                             </a>
                         </li>
                     </ul>

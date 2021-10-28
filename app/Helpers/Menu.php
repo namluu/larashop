@@ -1,6 +1,9 @@
 <?php
 namespace App\Helpers;
 
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
+
 class Menu
 {
     public static $a = '';
@@ -39,5 +42,17 @@ class Menu
             }
         }
         return $html;
+    }
+
+    public static function menuActiveLv1($prefix)
+    {
+        if (Str::contains(Route::currentRouteName(), $prefix))
+            return 'menu-open';
+    }
+
+    public static function menuActiveLv2($name)
+    {
+        if (Route::currentRouteName() == $name)
+            return 'active';
     }
 }
