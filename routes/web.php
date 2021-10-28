@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -25,6 +26,15 @@ Route::middleware(['auth'])->group(function () {
             Route::get('{menu}/edit', [MenuController::class, 'edit'])->name('menus.edit');
             Route::put('{menu}', [MenuController::class, 'update'])->name('menus.update');
             Route::delete('destroy', [MenuController::class, 'destroy'])->name('menus.delete');
+        });
+
+        Route::prefix('products')->group(function () {
+            Route::get('/', [ProductController::class, 'index'])->name('products.index');
+            Route::get('create', [ProductController::class, 'create'])->name('products.create');
+            Route::post('/', [ProductController::class, 'store'])->name('products.store');
+            Route::get('{menu}/edit', [ProductController::class, 'edit'])->name('products.edit');
+            Route::put('{menu}', [ProductController::class, 'update'])->name('products.update');
+            Route::delete('destroy', [ProductController::class, 'destroy'])->name('products.delete');
         });
     });
 });
