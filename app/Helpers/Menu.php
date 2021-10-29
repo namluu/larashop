@@ -44,10 +44,16 @@ class Menu
         return $html;
     }
 
-    public static function menuActiveLv1($prefix)
+    public static function menuOpen($prefix)
     {
         if (Str::contains(Route::currentRouteName(), $prefix))
             return 'menu-open';
+    }
+
+    public static function menuActiveLv1($prefix)
+    {
+        if (Str::contains(Route::currentRouteName(), $prefix))
+            return 'active';
     }
 
     public static function menuActiveLv2($name)

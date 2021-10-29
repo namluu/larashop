@@ -1,3 +1,4 @@
+@inject('menu', \App\Helpers\Menu::class)
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -34,40 +35,41 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-                <li class="nav-item {{\App\Helpers\Menu::menuActiveLv1('menus')}}">
-                    <a href="#" class="nav-link">
+                <li class="nav-item {{$menu::menuOpen('menus')}}">
+                    <a href="#" class="nav-link {{$menu::menuActiveLv1('menus')}}">
                         <i class="nav-icon fas fa-bars"></i>
                         <p>Menus<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('menus.index') }}" class="nav-link {{\App\Helpers\Menu::menuActiveLv2('menus.index')}}">
+                            <a href="{{ route('menus.index') }}" class="nav-link {{$menu::menuActiveLv2('menus.index')}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>List menus</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('menus.create') }}" class="nav-link {{\App\Helpers\Menu::menuActiveLv2('menus.create')}}">
+                            <a href="{{ route('menus.create') }}" class="nav-link {{$menu::menuActiveLv2('menus.create')}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Create menu</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item {{\App\Helpers\Menu::menuActiveLv1('products')}}">
-                    <a href="#" class="nav-link">
+
+                <li class="nav-item {{$menu::menuOpen('products')}}">
+                    <a href="#" class="nav-link {{$menu::menuActiveLv1('products')}}">
                         <i class="nav-icon fas fa-table"></i>
                         <p>Products<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('products.index') }}" class="nav-link {{\App\Helpers\Menu::menuActiveLv2('products.index')}}">
+                            <a href="{{ route('products.index') }}" class="nav-link {{$menu::menuActiveLv2('products.index')}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>List products</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('products.create') }}" class="nav-link {{\App\Helpers\Menu::menuActiveLv2('products.create')}}">
+                            <a href="{{ route('products.create') }}" class="nav-link {{$menu::menuActiveLv2('products.create')}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Create product</p>
                             </a>
