@@ -4,34 +4,45 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductFormRequest;
+use App\Http\Services\ProductService;
+use App\Http\Services\MenuService;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $productService;
+
+    protected $menuService;
+
+    public function __construct(ProductService $productService, MenuService $menuService)
+    {
+        $this->productService = $productService;
+        $this->menuService = $menuService;
+    }
+
     public function index()
     {
-        //
+        return view('admin.product.index', [
+            'products' => $this->productService->getAll()
+        ]);
     }
 
     public function create()
     {
         return view('admin.product.create', [
+            'menus' => $this->menuService->getAllHierarchy()
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(ProductFormRequest $request)
     {
-        //
+        $this->productService->create($request);
+        return redirect()->route('products.index');
     }
 
     /**

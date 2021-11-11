@@ -36,6 +36,20 @@ class MenuService
         return Menu::where('parent_id', 0)->get();
     }
 
+    public function getAllHierarchy()
+    {
+        $menus = Menu::all();
+        $hierarchy = [];
+        foreach ($menus as $item) {
+            if ($item->parent_id == 0) {
+                $hierarchy[$item->id] = ['name' => $item->name, 'children'];
+            } else {
+                $hierarchy[$item->parent_id]['children'][] = ['id' => $item->id, 'name' => $item->name];
+            }
+        }
+        return $hierarchy;
+    }
+
     public function update($menu, $request): bool
     {
         try {

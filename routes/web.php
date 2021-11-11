@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\UploadController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -36,6 +37,8 @@ Route::middleware(['auth'])->group(function () {
             Route::put('{menu}', [ProductController::class, 'update'])->name('products.update');
             Route::delete('destroy', [ProductController::class, 'destroy'])->name('products.delete');
         });
+
+        Route::post('upload/image', [UploadController::class, 'store'])->name('upload.image');
     });
 });
 

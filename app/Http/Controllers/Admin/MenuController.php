@@ -35,7 +35,7 @@ class MenuController extends Controller
     public function store(MenuFormRequest $request): RedirectResponse
     {
         $this->menuService->create($request);
-        return redirect()->route('menus.index');
+        return redirect()->back();
     }
 
     public function edit(Menu $menu)

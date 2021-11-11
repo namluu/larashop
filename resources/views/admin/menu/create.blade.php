@@ -17,7 +17,7 @@
             <div class="card-body">
                 <div class="form-group">
                     <label>Name</label>
-                    <input class="form-control" name="name">
+                    <input class="form-control" name="name" value="{{ old('name') }}">
                 </div>
 
                 <div class="form-group">
@@ -32,12 +32,12 @@
 
                 <div class="form-group">
                     <label>Description</label>
-                    <textarea class="form-control" name="description"></textarea>
+                    <textarea class="form-control" name="description">{{ old('description') }}</textarea>
                 </div>
 
                 <div class="form-group">
                     <label>Content</label>
-                    <textarea class="form-control" name="content" id="content"></textarea>
+                    <textarea class="form-control" name="content" id="content">{{ old('content') }}</textarea>
                 </div>
 
                 <div class="form-group">

@@ -19,14 +19,21 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Name</label>
-                            <input class="form-control" name="name">
+                            <input class="form-control" name="name" value="{{ old('name') }}">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Menu</label>
                             <select class="form-control" name="menu_id">
-
+                                <option value="0">--- select menu ---</option>
+                                @foreach ($menus as $parent)
+                                    <optgroup label="{{ $parent['name'] }}">
+                                        @foreach ($parent['children'] as $children)
+                                            <option value="{{ $children['id'] }}">{{ $children['name'] }}</option>
+                                        @endforeach
+                                    </optgroup>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -36,25 +43,32 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Price</label>
-                            <input class="form-control" name="price" type="number">
+                            <input class="form-control" name="price" type="number" value="{{ old('price') }}">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Discount</label>
-                            <input class="form-control" name="price_discount" type="number">
+                            <input class="form-control" name="price_discount" type="number" value="{{ old('price_discount') }}">
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label>Description</label>
-                    <textarea class="form-control" name="description"></textarea>
+                    <textarea class="form-control" name="description">{{ old('description') }}</textarea>
                 </div>
 
                 <div class="form-group">
                     <label>Content</label>
-                    <textarea class="form-control" name="content" id="content"></textarea>
+                    <textarea class="form-control" name="content" id="content">{{ old('description') }}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Image</label>
+                    <input class="form-control" name="file_upload" type="file" id="upload" />
+                    <img src="" alt="" id="image_show" width="200">
+                    <input type="hidden" name="thumb" id="thumb">
                 </div>
 
                 <div class="form-group">
