@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Services;
+use App\Http\Requests\ProductFormRequest;
 use App\Models\Product;
 use Illuminate\Support\Facades\Session;
 
@@ -29,5 +30,39 @@ class ProductService
         }
 
         return true;
+    }
+
+    public function update(Product $product, ProductFormRequest $request)
+    {
+        if (!$request->isValid()) return false;
+
+        try {
+            $product->fill($request->input());
+            $product->save();
+            Session::flash('success', 'Updated successfully');
+        } catch (\Exception $e) {
+            Session::flash('error', $e->getMessage());
+            return false;
+        }
+
+        return true;
+    }
+
+    public function destroy($request): bool
+    {
+        try {
+            $id = $request->input('id');
+            $product = Product::where('id', $id);
+            if ($product->exists()) {
+                $product->delete();
+                Session::flash('success', 'Delete successfully');
+                return true;
+            }
+            Session::flash('error', 'No exist data');
+            return false;
+        } catch (\Exception $e) {
+            Session::flash('error', $e->getMessage());
+            return false;
+        }
     }
 }

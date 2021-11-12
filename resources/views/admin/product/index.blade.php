@@ -16,8 +16,8 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Description</th>
                 <th>Image</th>
+                <th>Price</th>
                 <th>Menu</th>
                 <th>Active</th>
                 <th>Date</th>
@@ -29,8 +29,14 @@
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
-                    <td>{{ Str::of($item->description)->words(15, '...') }}</td>
                     <td><img src="{{ $item->thumb }}" alt="" height="100"></td>
+                    <td>
+                        @if ($item->price_discount)
+                            <span class="text-muted"><s>{{ $item->price }}</s></span> <span class="font-weight-bold">{{ $item->price_discount }}</span>
+                        @else
+                            <span class="font-weight-bold">{{ $item->price }}</span>
+                        @endif
+                    </td>
                     <td>{{ $item->menu_name }}</td>
                     <td>
                         @if ($item->active)
