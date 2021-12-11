@@ -7,9 +7,9 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UploadController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\Frontend\HomeController;
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('admin/login', [LoginController::class, 'index'])->name('login');
 Route::post('admin/login/authenticate', [LoginController::class, 'authenticate'])->name('login.auth');
