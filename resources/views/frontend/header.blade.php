@@ -31,7 +31,7 @@
         <div class="wrap-menu-desktop">
             <nav class="limiter-menu-desktop container">
                 
-                <!-- Logo desktop -->       
+                <!-- Logo desktop -->
                 <a href="#" class="logo">
                     <img src="/template/cozastore/images/icons/logo-01.png" alt="IMG-LOGO">
                 </a>
@@ -41,15 +41,30 @@
                     <ul class="main-menu">
                         <li class="active-menu">
                             <a href="index.html">Home</a>
+                        </li>
+
+                        @foreach($menus as $item)
+                            @isset ($item['parent'])
+                            <li>
+                                <a href="">{{ $item['parent']->name }}</a>
+                                @isset ($item['children'])
+                                <ul class="sub-menu">
+                                    @foreach($item['children'] as $child)
+                                    <li><a href="">{{ $child->name }}</a></li>
+                                    @endforeach
+                                </ul>
+                                @endisset
+                            </li>
+                            @endisset
+                        @endforeach
+
+                        <li>
+                            <a href="product.html">Shop</a>
                             <ul class="sub-menu">
                                 <li><a href="index.html">Homepage 1</a></li>
                                 <li><a href="home-02.html">Homepage 2</a></li>
                                 <li><a href="home-03.html">Homepage 3</a></li>
                             </ul>
-                        </li>
-
-                        <li>
-                            <a href="product.html">Shop</a>
                         </li>
 
                         <li class="label1" data-label1="hot">
@@ -68,7 +83,7 @@
                             <a href="contact.html">Contact</a>
                         </li>
                     </ul>
-                </div>  
+                </div>
 
                 <!-- Icon header -->
                 <div class="wrap-icon-header flex-w flex-r-m">
