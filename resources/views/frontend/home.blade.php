@@ -4,7 +4,7 @@
     <title>Home</title>
     @include('frontend.head')
 </head>
-<body class="animsition-rm">
+<body class="animsition">
     
     <!-- Header -->
     @include('frontend.header')

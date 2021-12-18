@@ -32,7 +32,7 @@
             <nav class="limiter-menu-desktop container">
                 
                 <!-- Logo desktop -->
-                <a href="#" class="logo">
+                <a href="{{ route('home') }}" class="logo">
                     <img src="/template/cozastore/images/icons/logo-01.png" alt="IMG-LOGO">
                 </a>
 
@@ -40,17 +40,17 @@
                 <div class="menu-desktop">
                     <ul class="main-menu">
                         <li class="active-menu">
-                            <a href="index.html">Home</a>
+                            <a href="{{ route('home') }}">Home</a>
                         </li>
 
                         @foreach($menus as $item)
                             @isset ($item['parent'])
                             <li>
-                                <a href="">{{ $item['parent']->name }}</a>
+                                <a href="{{ route('category.show', $item['parent']->slug) }}">{{ $item['parent']->name }}</a>
                                 @isset ($item['children'])
                                 <ul class="sub-menu">
                                     @foreach($item['children'] as $child)
-                                    <li><a href="">{{ $child->name }}</a></li>
+                                    <li><a href="{{ route('category.show', $child->slug) }}">{{ $child->name }}</a></li>
                                     @endforeach
                                 </ul>
                                 @endisset

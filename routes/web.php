@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UploadController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\MenuController as MenuFrontendController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -42,3 +43,4 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
+Route::get('category/{slug}', [MenuFrontendController::class, 'show'])->name('category.show');
