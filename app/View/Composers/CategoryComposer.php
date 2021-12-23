@@ -2,10 +2,10 @@
 
 namespace App\View\Composers;
 
-use App\Models\Menu;
+use App\Models\Category;
 use Illuminate\View\View;
 
-class MenuComposer
+class CategoryComposer
 {
     public function __construct()
     {
@@ -13,15 +13,15 @@ class MenuComposer
 
     public function compose(View $view)
     {
-        $menus = Menu::select('id', 'name', 'parent_id', 'slug')->where('active', 1)->orderByDesc('id')->get();
+        $categories = Category::select('id', 'name', 'parent_id', 'slug')->where('active', 1)->orderByDesc('id')->get();
         $multipleLevels = [];
-        foreach ($menus as $menu) {
+        foreach ($categories as $menu) {
             if ($menu->parent_id == 0) {
                 $multipleLevels[$menu->id]['parent'] = $menu;
             } else {
                 $multipleLevels[$menu->parent_id]['children'][] = $menu;
             }
         }
-        $view->with('menus', $multipleLevels);
+        $view->with('categories', $multipleLevels);
     }
 }

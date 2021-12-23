@@ -1,20 +1,20 @@
 <?php
 namespace App\Http\Services;
-use App\Models\Menu;
+use App\Models\Category;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
-class MenuService
+class CategoryService
 {
     public function getAll()
     {
-        return Menu::orderByDesc('id')->paginate(30);
+        return Category::orderByDesc('id')->paginate(30);
     }
 
     public function create($request): bool
     {
         try {
-            Menu::create([
+            Category::create([
                 'name' => $request->input('name'),
                 'parent_id' => (int) $request->input('parent_id'),
                 'description' => $request->input('description'),
@@ -33,14 +33,14 @@ class MenuService
 
     public function getParents()
     {
-        return Menu::where('parent_id', 0)->get();
+        return Category::where('parent_id', 0)->get();
     }
 
     public function getAllHierarchy()
     {
-        $menus = Menu::all();
+        $categories = Category::all();
         $hierarchy = [];
-        foreach ($menus as $item) {
+        foreach ($categories as $item) {
             if ($item->parent_id == 0) {
                 $hierarchy[$item->id] = ['name' => $item->name, 'children'];
             } else {
@@ -50,11 +50,11 @@ class MenuService
         return $hierarchy;
     }
 
-    public function update($menu, $request): bool
+    public function update($category, $request): bool
     {
         try {
-            $menu->fill($request->input());
-            $menu->save();
+            $category->fill($request->input());
+            $category->save();
             Session::flash('success', 'Create successfully');
         } catch (\Exception $e) {
             Session::flash('error', $e->getMessage());
@@ -68,9 +68,9 @@ class MenuService
     {
         try {
             $id = $request->input('id');
-            $menu = Menu::where('id', $id);
-            if ($menu->exists()) {
-                $menu->orWhere('parent_id', $id)->delete();
+            $category = Category::where('id', $id);
+            if ($category->exists()) {
+                $category->orWhere('parent_id', $id)->delete();
                 Session::flash('success', 'Delete successfully');
                 return true;
             }

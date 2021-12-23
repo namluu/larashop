@@ -2,13 +2,13 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LoginController;
-use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UploadController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\Frontend\MenuController as MenuFrontendController;
+use App\Http\Controllers\Frontend\CategoryController as CategoryFrontendController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -21,13 +21,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('admin');
         Route::get('dashboard', [DashboardController::class, 'index']);
 
-        Route::prefix('menus')->group(function () {
-            Route::get('/', [MenuController::class, 'index'])->name('menus.index');
-            Route::get('create', [MenuController::class, 'create'])->name('menus.create');
-            Route::post('/', [MenuController::class, 'store'])->name('menus.store');
-            Route::get('{menu}/edit', [MenuController::class, 'edit'])->name('menus.edit');
-            Route::put('{menu}', [MenuController::class, 'update'])->name('menus.update');
-            Route::delete('destroy', [MenuController::class, 'destroy'])->name('menus.delete');
+        Route::prefix('categories')->group(function () {
+            Route::get('/', [CategoryController::class, 'index'])->name('categories.index');
+            Route::get('create', [CategoryController::class, 'create'])->name('categories.create');
+            Route::post('/', [CategoryController::class, 'store'])->name('categories.store');
+            Route::get('{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+            Route::put('{category}', [CategoryController::class, 'update'])->name('categories.update');
+            Route::delete('destroy', [CategoryController::class, 'destroy'])->name('categories.delete');
         });
 
         Route::prefix('products')->group(function () {
@@ -43,4 +43,4 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-Route::get('category/{slug}', [MenuFrontendController::class, 'show'])->name('category.show');
+Route::get('category/{slug}', [CategoryFrontendController::class, 'show'])->name('category.show');

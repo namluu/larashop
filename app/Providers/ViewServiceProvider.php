@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\View\Composers\MenuComposer;
+use App\View\Composers\CategoryComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,6 +25,6 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('frontend.header', MenuComposer::class);
+        View::composer('frontend.header', CategoryComposer::class);
     }
 }

@@ -43,7 +43,7 @@
                             <a href="{{ route('home') }}">Home</a>
                         </li>
 
-                        @foreach($menus as $item)
+                        @foreach($categories as $item)
                             @isset ($item['parent'])
                             <li>
                                 <a href="{{ route('category.show', $item['parent']->slug) }}">{{ $item['parent']->name }}</a>

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @mixin Builder
  */
-class Menu extends Model
+class Category extends Model
 {
     use HasFactory;
 

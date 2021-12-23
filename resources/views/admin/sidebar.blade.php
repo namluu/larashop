@@ -35,22 +35,22 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-                <li class="nav-item {{$menu::menuOpen('menus')}}">
-                    <a href="#" class="nav-link {{$menu::menuActiveLv1('menus')}}">
+                <li class="nav-item {{$menu::menuOpen('categories')}}">
+                    <a href="#" class="nav-link {{$menu::menuActiveLv1('categories')}}">
                         <i class="nav-icon fas fa-bars"></i>
-                        <p>Menus<i class="right fas fa-angle-left"></i></p>
+                        <p>Categories<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('menus.index') }}" class="nav-link {{$menu::menuActiveLv2('menus.index')}}">
+                            <a href="{{ route('categories.index') }}" class="nav-link {{$menu::menuActiveLv2('categories.index')}}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>List menus</p>
+                                <p>List categories</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('menus.create') }}" class="nav-link {{$menu::menuActiveLv2('menus.create')}}">
+                            <a href="{{ route('categories.create') }}" class="nav-link {{$menu::menuActiveLv2('categories.create')}}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Create menu</p>
+                                <p>Create category</p>
                             </a>
                         </li>
                     </ul>

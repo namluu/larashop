@@ -1,6 +1,6 @@
 @extends('admin.layout')
 
-@section('title', 'Create menu')
+@section('title', "Edit category: $category->name")
 
 @section('head')
     <script src="/template/admin/ckeditor/ckeditor.js"></script>
@@ -9,45 +9,46 @@
 @section('content')
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Add new</h3>
+            <h3 class="card-title">Edit category: {{ $category->name }}</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form action="{{ route('menus.store') }}" method="post">
+        <form action="{{ route('categories.update', $category) }}" method="post">
+            @method('PUT')
             <div class="card-body">
                 <div class="form-group">
                     <label>Name</label>
-                    <input class="form-control" name="name" value="{{ old('name') }}">
+                    <input class="form-control" name="name" value="{{ $category->name }}">
                 </div>
 
                 <div class="form-group">
                     <label>Parent</label>
                     <select class="form-control" name="parent_id">
-                        <option value="0">--- root ---</option>
-                        @foreach($menuParents as $item)
-                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        <option value="0" @if ($category->parent_id == 0) selected="selected" @endif>--- root ---</option>
+                        @foreach($categoryParents as $item)
+                            <option value="{{ $item->id }}" @if ($item->id == $category->parent_id) selected="selected" @endif>{{ $item->name }}</option>
                         @endforeach
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label>Description</label>
-                    <textarea class="form-control" name="description">{{ old('description') }}</textarea>
+                    <textarea class="form-control" name="description">{{ $category->description }}</textarea>
                 </div>
 
                 <div class="form-group">
                     <label>Content</label>
-                    <textarea class="form-control" name="content" id="content">{{ old('content') }}</textarea>
+                    <textarea class="form-control" name="content" id="content">{{ $category->content }}</textarea>
                 </div>
 
                 <div class="form-group">
                     <label>Active</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="active" value="1" checked="">
+                        <input class="form-check-input" type="radio" name="active" value="1" @if ($item->active == 1) checked="" @endif>
                         <label class="form-check-label">Yes</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="active" value="0">
+                        <input class="form-check-input" type="radio" name="active" value="0" @if ($item->active == 0) checked="" @endif>
                         <label class="form-check-label">No</label>
                     </div>
                 </div>

@@ -1,12 +1,12 @@
 @extends('admin.layout')
 
-@section('title', 'Index menu')
+@section('title', 'Index categories')
 
 @section('content')
     <div class="card-header">
-        <h3 class="card-title">Latest menus</h3>
+        <h3 class="card-title">Latest categories</h3>
         <div class="card-tools">
-            {{ $menus->links() }}
+            {{ $categories->links() }}
         </div>
     </div>
     <div class="card-body table-responsive p-0">
@@ -23,13 +23,13 @@
                 </tr>
             </thead>
             <tbody>
-                @include('admin.menu.multiple', ['menus' => $menus, 'parent_id' => 0, 'char' => ''])
+                @include('admin.category.multiple', ['categories' => $categories, 'parent_id' => 0, 'char' => ''])
             </tbody>
         </table>
     </div>
     <div class="card-header">
         <div class="card-tools">
-            {{ $menus->links() }}
+            {{ $categories->links() }}
         </div>
     </div>
 @endsection
