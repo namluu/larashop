@@ -18,7 +18,7 @@ function removeRow(id, url)
         });
     }
 }
-
+/*
 $("#upload").change(function () {
     const form = new FormData();
     form.append('file_upload', $(this)[0].files[0]);
@@ -39,3 +39,4 @@ $("#upload").change(function () {
         }
     });
 });
+*/

@@ -1,11 +1,12 @@
 <?php
+use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UploadController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\SliderController;
 
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\CategoryController as CategoryFrontendController;
@@ -40,6 +41,15 @@ Route::middleware(['auth'])->group(function () {
         });
 
         Route::post('upload/image', [UploadController::class, 'store'])->name('upload.image');
+
+        Route::prefix('sliders')->group(function () {
+            Route::get('/', [SliderController::class, 'index'])->name('sliders.index');
+            Route::get('create', [SliderController::class, 'create'])->name('sliders.create');
+            Route::post('/', [SliderController::class, 'store'])->name('sliders.store');
+            Route::get('{slider}/edit', [SliderController::class, 'edit'])->name('sliders.edit');
+            Route::put('{slider}', [SliderController::class, 'update'])->name('sliders.update');
+            Route::delete('destroy', [SliderController::class, 'destroy'])->name('sliders.delete');
+        });
     });
 });
 

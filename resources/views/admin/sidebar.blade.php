@@ -76,6 +76,27 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="nav-item {{$menu::menuOpen('sliders')}}">
+                    <a href="#" class="nav-link {{$menu::menuActiveLv1('sliders')}}">
+                        <i class="nav-icon fas fa-images"></i>
+                        <p>Sliders<i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('sliders.index') }}" class="nav-link {{$menu::menuActiveLv2('sliders.index')}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List sliders</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('sliders.create') }}" class="nav-link {{$menu::menuActiveLv2('sliders.create')}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create slider</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
