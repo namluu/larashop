@@ -30,3 +30,4 @@
 <link rel="stylesheet" type="text/css" href="/template/cozastore/css/util.css">
 <link rel="stylesheet" type="text/css" href="/template/cozastore/css/main.css">
 <!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="/template/cozastore/css/custom.css">
