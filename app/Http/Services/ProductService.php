@@ -9,8 +9,8 @@ class ProductService
     public function getAll()
     {
         return Product::orderByDesc('id')
-            ->leftJoin('menus', 'menus.id', '=', 'products.menu_id')
-            ->select('products.*', 'menus.name as menu_name')
+            ->leftJoin('categories', 'categories.id', '=', 'products.menu_id')
+            ->select('products.*', 'categories.name as menu_name')
             ->paginate(30);
     }
 

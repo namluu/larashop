@@ -6,19 +6,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductFormRequest;
 use App\Http\Services\ProductService;
-use App\Http\Services\MenuService;
+use App\Http\Services\CategoryService;
 use App\Models\Product;
 
 class ProductController extends Controller
 {
     protected $productService;
 
-    protected $menuService;
+    protected $categoryService;
 
-    public function __construct(ProductService $productService, MenuService $menuService)
+    public function __construct(ProductService $productService, CategoryService $categoryService)
     {
         $this->productService = $productService;
-        $this->menuService = $menuService;
+        $this->categoryService = $categoryService;
     }
 
     public function index()
@@ -31,7 +31,7 @@ class ProductController extends Controller
     public function create()
     {
         return view('admin.product.create', [
-            'menus' => $this->menuService->getAllHierarchy()
+            'menus' => $this->categoryService->getAllHierarchy()
         ]);
     }
 
@@ -67,7 +67,7 @@ class ProductController extends Controller
     {
         return view('admin.product.edit', [
             'product' => $product,
-            'menus' => $this->menuService->getAllHierarchy()
+            'menus' => $this->categoryService->getAllHierarchy()
         ]);
     }
 
