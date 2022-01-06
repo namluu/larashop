@@ -18,6 +18,8 @@ class Slider extends Model
         'image',
         'url',
         'sort_order',
-        'active'
+        'active',
+        'respon1',
+        'respon2'
     ];
 }

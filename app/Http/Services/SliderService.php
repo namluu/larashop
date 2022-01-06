@@ -2,6 +2,7 @@
 namespace App\Http\Services;
 use App\Models\Slider;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
 
 class SliderService
 {
@@ -11,7 +12,7 @@ class SliderService
             ->paginate(30);
     }
 
-    public function create($request): bool
+    public function create(Request $request): bool
     {
         try {
             $request->except('_token');
@@ -20,6 +21,21 @@ class SliderService
         } catch (\Exception $e) {
             Session::flash('error', $e->getMessage());
             \Log::info($e->getMessage());
+            return false;
+        }
+
+        return true;
+    }
+
+    public function update(Slider $slider, Request $request)
+    {
+        try {
+            $request->except('_token');
+            $slider->fill($request->input());
+            $slider->save();
+            Session::flash('success', 'Updated successfully');
+        } catch (\Exception $e) {
+            Session::flash('error', $e->getMessage());
             return false;
         }
 

@@ -24,6 +24,16 @@
                 </div>
 
                 <div class="form-group">
+                    <label>Heading</label>
+                    <input class="form-control" name="respon1" value="{{ old('respon1') }}">
+                </div>
+
+                <div class="form-group">
+                    <label>Secondary</label>
+                    <input class="form-control" name="respon2" value="{{ old('respon2') }}">
+                </div>
+
+                <div class="form-group">
                     <label>Url</label>
                     <input class="form-control" name="url" value="{{ old('url') }}">
                 </div>
